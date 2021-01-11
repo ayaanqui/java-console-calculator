@@ -45,6 +45,7 @@ public class App {
             else {
                 for (String msg : output.errors)
                     System.out.printf(" *%s", msg);
+                System.out.println();
             }
             System.out.println();
         }
