@@ -1,5 +1,6 @@
 package com.github.ayaanqui.javaconsolecalculator;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Scanner;
 import com.github.ayaanqui.expressionresolver.Resolver;
@@ -19,15 +20,13 @@ public class App {
         res.setFunction("min", params -> {
             double min = params[0];
             for (double val : params)
-                if (val < min)
-                    min = val;
+                min = Math.min(min, val);
             return min;
         });
         res.setFunction("max", params -> {
             double max = params[0];
             for (double val : params)
-                if (val > max)
-                    max = val;
+                max = Math.max(max, val);
             return max;
         });
 
