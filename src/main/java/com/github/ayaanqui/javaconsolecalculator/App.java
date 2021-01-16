@@ -1,10 +1,12 @@
 package com.github.ayaanqui.javaconsolecalculator;
 
-import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Scanner;
 import com.github.ayaanqui.expressionresolver.Resolver;
 import com.github.ayaanqui.expressionresolver.objects.Response;
+
+import static com.diogonunes.jcolor.Ansi.*;
+import static com.diogonunes.jcolor.Attribute.*;
 
 public class App {
     public static void main(String[] args) {
@@ -31,7 +33,7 @@ public class App {
         });
 
         while (true) {
-            System.out.print(">> ");
+            System.out.print("> ");
             String input = keyboard.nextLine();
 
             if (input.equals("quit") || input.equals("exit"))
@@ -40,11 +42,10 @@ public class App {
             Response output = res.setExpression(input).solveExpression();
 
             if (output.success)
-                System.out.println(output.result);
+                System.out.println(colorize(Double.toString(output.result), GREEN_TEXT()));
             else {
                 for (String msg : output.errors)
-                    System.out.printf(" *%s", msg);
-                System.out.println();
+                    System.out.println(colorize("* " + msg, WHITE_TEXT(), RED_BACK()));
             }
             System.out.println();
         }
