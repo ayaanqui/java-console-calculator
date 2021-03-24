@@ -19,18 +19,9 @@ public class App {
             return (params.length % 2 == 0) ? (params[hLen - 1] + params[hLen]) / 2 : params[hLen];
         });
         res.setFunction("len", params -> (double) params.length);
-        res.setFunction("min", params -> {
-            double min = params[0];
-            for (double val : params)
-                min = Math.min(min, val);
-            return min;
-        });
-        res.setFunction("max", params -> {
-            double max = params[0];
-            for (double val : params)
-                max = Math.max(max, val);
-            return max;
-        });
+        res.setFunction("min", params -> Arrays.stream(params).reduce(params[0], (min, el) -> min = Math.min(min, el)));
+        res.setFunction("max", params -> Arrays.stream(params).reduce(params[0], (max, el) -> max = Math.max(max, el)));
+        res.setFunction("mod", params -> params[0] % params[1]);
 
         while (true) {
             System.out.print("> ");
