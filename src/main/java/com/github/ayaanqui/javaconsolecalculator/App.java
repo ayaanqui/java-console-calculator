@@ -33,6 +33,8 @@ public class App {
             String input = keyboard.nextLine();
 
             switch (input) {
+                case "":
+                  break;
                 case "quit":
                     break app;
                 case "exit":
